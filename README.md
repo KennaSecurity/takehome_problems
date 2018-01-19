@@ -43,13 +43,13 @@ We're not allowed to sell there because of something called "Scrabble."
 
 # What We're Testing For
 
-You do not have to finish the code or reach a perfect solution.
-You should be able to explain the choices you have made.
-You should be able to demonstrate that you can:
+- You do not have to finish the code or reach a perfect solution.
+- You should be able to explain the choices you have made.
+- You should be able to demonstrate that you can:
     - read a method in Ruby
     - express business logic into new code
     - alter the behavior of existing code
-You may (for added bonus):
+- You may (for added bonus):
     - take advantage of refactoring opportunities
     - write new tests
     - make performance improvements
