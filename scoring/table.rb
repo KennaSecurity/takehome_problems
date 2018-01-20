@@ -14,7 +14,9 @@ class Scoring
     end
 
     def score(letter)
-      table.select { |k| k.include? letter }.first.last
+      table.find do |k,v|
+        k.include? letter
+      end&.last || 0
     end
   end
 end
