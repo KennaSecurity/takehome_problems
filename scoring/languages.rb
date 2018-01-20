@@ -1,3 +1,4 @@
+
 class Scoring
   # Just data
   class Languages
@@ -31,10 +32,22 @@ class Scoring
       %w[Ф Щ Ь] => 10
     }.freeze
 
+    ESTONIAN = {
+      %w[K L O U T S E I A] => 1,
+      %w[R D M N] => 2,
+      %w[G V] => 3,
+      %w[B H J P Õ] => 4,
+      %w[Ä Ü] => 5,
+      %w[Ö] => 6,
+      %w[F] => 8,
+      %w[Š Z Ž] => 10
+    }.freeze
+
     LANGUAGES = {
       english: ENGLISH,
       spanish: SPANISH,
-      bulgarian: BULGARIAN
+      bulgarian: BULGARIAN,
+      estonian: ESTONIAN
     }.freeze
 
     def self.scoring_table_for(language)
