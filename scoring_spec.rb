@@ -109,5 +109,16 @@ RSpec.describe Scoring do
         end
       end
     end
+
+    context 'in Bulgarian' do
+      let(:subject) { described_class.new(:bulgarian) }
+
+      %w[А О Е И Т Н П Р С].each do |letter|
+        it "scores a #{letter} as 1 point" do
+          expect(subject.score_letter(letter))
+            .to eq 1
+        end
+      end
+    end
   end
 end

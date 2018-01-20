@@ -25,12 +25,23 @@ class Scoring
     %w[Z] => 10
   }.freeze
 
+  BULGARIAN = {
+    %w[А О Е И Т Н П Р С] => 1,
+    %w[В Д М Б К Л] => 2,
+    %w[Г Ъ] => 3,
+    %w[Ж З] => 4,
+    %w[У Ч Я Й Х] => 5,
+    %w[Ц Ш Ю] => 8,
+    %w[Ф Щ Ь] => 10
+  }.freeze
+
   def scoring_table
     case language
     when :english then ENGLISH
     when :spanish then SPANISH
-    end
+    when :bulgarian then BULGARIAN
   end
+end
 
   def initialize(language = :english)
     @language = language
