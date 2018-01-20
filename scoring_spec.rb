@@ -1,124 +1,27 @@
+# -*- coding: utf-8 -*-
 # frozen_string_literal: true
 
 require_relative 'scoring'
+require_relative 'scoring/languages'
 
 RSpec.describe Scoring do
-  subject { described_class.new }
-
-  describe '#score_letter' do
-    context 'in English' do
-      %w[A E I O U L N R S T].each do |letter|
-        it "scores a #{letter} as 1 point" do
-          expect(subject.score_letter(letter))
-            .to eq 1
-        end
+  [:english, :spanish, :bulgarian].each do |symbol|
+    context "in #{symbol.to_s.capitalize}" do
+      subject { described_class.new symbol }
+      language = Scoring::Languages.scoring_table_for(symbol)
+      if language.nil?
+        binding.pry
       end
-
-      %w[D G].each do |letter|
-        it "scores a #{letter} as 2 point" do
-          expect(subject.score_letter(letter))
-            .to eq 2
-        end
-      end
-
-      %w[B C M P].each do |letter|
-        it "scores a #{letter} as 3 point" do
-          expect(subject.score_letter(letter))
-            .to eq 3
-        end
-      end
-
-      %w[F H V W Y].each do |letter|
-        it "scores a #{letter} as 4 point" do
-          expect(subject.score_letter(letter))
-            .to eq 4
-        end
-      end
-
-      %w[K].each do |letter|
-        it "scores a #{letter} as 5 point" do
-          expect(subject.score_letter(letter))
-            .to eq 5
-        end
-      end
-
-      %w[J X].each do |letter|
-        it "scores a #{letter} as 8 point" do
-          expect(subject.score_letter(letter))
-            .to eq 8
-        end
-      end
-
-      %w[Q Z].each do |letter|
-        it "scores a #{letter} as 10 point" do
-          expect(subject.score_letter(letter))
-            .to eq 10
-        end
-      end
-    end
-
-    context 'in Spanish' do
-      let(:subject) { described_class.new(:spanish) }
-
-      %w[A E O S I U N L R T].each do |letter|
-        it "scores a #{letter} as 1 point" do
-          expect(subject.score_letter(letter))
-            .to eq 1
-        end
-      end
-
-      %w[C D G].each do |letter|
-        it "scores a #{letter} as 2 points" do
-          expect(subject.score_letter(letter))
-            .to eq 2
-        end
-      end
-
-      %w[B M P].each do |letter|
-        it "scores a #{letter} as 2 points" do
-          expect(subject.score_letter(letter))
-            .to eq 3
-        end
-      end
-
-      %w[F H V Y].each do |letter|
-        it "scores a #{letter} as 4 points" do
-          expect(subject.score_letter(letter))
-            .to eq 4
-        end
-      end
-
-      %w[J].each do |letter|
-        it "scores a #{letter} as 6 points" do
-          expect(subject.score_letter(letter))
-            .to eq 6
-        end
-      end
-
-      %w[K LL Ñ Q RR W X].each do |letter|
-        it "scores a #{letter} as 8 points" do
-          expect(subject.score_letter(letter))
-            .to eq 8
-        end
-      end
-
-      %w[Z].each do |letter|
-        it "scores a #{letter} as 10 points" do
-          expect(subject.score_letter(letter))
-            .to eq 10
-        end
-      end
-    end
-
-    context 'in Bulgarian' do
-      let(:subject) { described_class.new(:bulgarian) }
-
-      %w[А О Е И Т Н П Р С].each do |letter|
-        it "scores a #{letter} as 1 point" do
-          expect(subject.score_letter(letter))
-            .to eq 1
+      language.keys.each do |key|
+        score = language.fetch(key)
+        key.each do |letter|
+          it "scores a #{letter} as #{score} points" do
+            expect(subject.score_letter(letter))
+              .to eq score
+          end
         end
       end
     end
   end
 end
+
