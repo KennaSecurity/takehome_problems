@@ -1,4 +1,4 @@
-
+# coding: utf-8
 class Scoring
   # Just data
   class Languages
@@ -43,8 +43,18 @@ class Scoring
       %w[Š Z Ž] => 10
     }.freeze
 
+    FRENCH = {
+      %w[L N O R S T U I A E] => 1,
+      %w[G D M] => 2,
+      %w[B C P] => 3,
+      %w[F H V] => 4,
+      %w[J Q] => 8,
+      %w[K W X Y Z] => 10
+    }.freeze
+
     LANGUAGES = {
       english: ENGLISH,
+      french: FRENCH,
       spanish: SPANISH,
       bulgarian: BULGARIAN,
       estonian: ESTONIAN
@@ -52,6 +62,10 @@ class Scoring
 
     def self.scoring_table_for(language)
       LANGUAGES.dig(language)
+    end
+
+    def self.available
+      LANGUAGES.keys
     end
   end
 end

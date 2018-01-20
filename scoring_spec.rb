@@ -5,7 +5,8 @@ require_relative 'scoring'
 require_relative 'scoring/languages'
 
 RSpec.describe Scoring do
-  [:english, :spanish, :bulgarian, :estonian].each do |symbol|
+  # when a language has a scoring table, test each character for scoring
+  Scoring::Languages.available.each do |symbol|
     context "in #{symbol.to_s.capitalize}" do
       subject { described_class.new symbol }
       language = Scoring::Languages.scoring_table_for(symbol)
