@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 class Scoring
+  # Just data
   class Languages
-
     ENGLISH = {
       %w[A E I O U L N R S T] => 1,
       %w[D G] => 2,
@@ -36,7 +35,7 @@ class Scoring
       english: ENGLISH,
       spanish: SPANISH,
       bulgarian: BULGARIAN
-    }
+    }.freeze
 
     def self.scoring_table_for(language)
       LANGUAGES.dig(language)

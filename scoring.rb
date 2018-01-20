@@ -1,21 +1,16 @@
 # frozen_string_literal: true
 
-require_relative 'scoring/languages'
+require_relative 'scoring/table'
 
+# scoring gives the score for a scrobbly letter
 class Scoring
-  attr_accessor :language
-
-  def scoring_table
-    Languages.scoring_table_for(language)
-  end
+  attr_reader :scoring_table
 
   def initialize(language = :english)
-    @language = language
+    @scoring_table = Table.for(language)
   end
 
   def score_letter(letter)
-    scoring_table
-      .select { |k| k.include? letter }
-      .first.last
+    scoring_table.score letter
   end
 end
