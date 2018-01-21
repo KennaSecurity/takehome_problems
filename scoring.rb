@@ -21,3 +21,38 @@ class Scoring
     end
   end
 end
+
+=begin 
+
+Business Logic:
+  * New language feature needs to work without changing the way the method is called!
+  - INPUT: Letter, optionally a language name
+  - OUTPUT: Integer for the score of that letter, 0 if invalid
+  - add initialize method with an instance variable for what language to be used 
+  - default value should be current language (English) with option for other languages 
+    - If we're already selling in Canada, there should be a French version! (Stretch goal)
+  - opportunities for improvement: cypher hash?
+
+TESTS:
+  - add tests for letters from each category for the new language
+  - add test for invalid input for the new language
+
+
+Valid / invalid input concerns:
+  - What should the response be for invalid letter input, such as words or numbers?
+  - Can it be assumed that the language name will be passed in with a consistent format? I.E. spelling, capitalization? 
+  - Can it be assumed that there are no security risks from input?
+
+Edge cases:
+  - Are letters reliably going to come in uppercase?
+
+Refactoring:
+  - cypher hash for each language, set on initialization
+  - why do some lines have 'return' and others don't?
+  - separation of concerns:  should another method first check if the input is in the current alphabet and upcase it?
+
+Performance:
+  - checking arrays for inclusion vs key/value lookup. I suspect the latter is faster (especially for letters like Q and Z) but can do tests to confirm 
+
+
+=end 
