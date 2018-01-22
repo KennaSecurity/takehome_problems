@@ -66,58 +66,60 @@ RSpec.describe Scoring do
 
     context 'in Spanish' do
       let (:language) {:spanish}
+      subject { described_class.new(language) }
+
       %w[A E O S I U N L R T].each do |letter|
         it "scores a #{letter} as 1 point" do
-          expect(subject(language).score_letter(letter))
+          expect(subject.score_letter(letter))
             .to eq 1
         end
       end
 
       %w[C D G].each do |letter|
         it "scores a #{letter} as 2 point" do
-          expect(subject(language).score_letter(letter))
+          expect(subject.score_letter(letter))
             .to eq 2
         end
       end
 
       %w[B M P].each do |letter|
         it "scores a #{letter} as 3 point" do
-          expect(subject(language).score_letter(letter))
+          expect(subject.score_letter(letter))
             .to eq 3
         end
       end
 
       %w[F H V Y].each do |letter|
         it "scores a #{letter} as 4 point" do
-          expect(subject(language).score_letter(letter))
+          expect(subject.score_letter(letter))
             .to eq 4
         end
       end
 
       %w[J].each do |letter|
         it "scores a #{letter} as 5 point" do
-          expect(subject(language).score_letter(letter))
+          expect(subject.score_letter(letter))
             .to eq 6
         end
       end
 
       %w[K LL Ñ Q RR W X].each do |letter|
         it "scores a #{letter} as 8 point" do
-          expect(subject(language).score_letter(letter))
+          expect(subject.score_letter(letter))
             .to eq 8
         end
       end
 
       %w[Z].each do |letter|
         it "scores a #{letter} as 10 point" do
-          expect(subject(language).score_letter(letter))
+          expect(subject.score_letter(letter))
             .to eq 10
         end
       end
 
       %w[1 -23 puppy false].each do |invalid_input|
         it "scores invalid input as 0 points" do 
-          expect(subject(language).score_letter(invalid_input)).to eq 0
+          expect(subject.score_letter(invalid_input)).to eq 0
         end 
       end
     end 
