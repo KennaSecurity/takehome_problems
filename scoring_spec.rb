@@ -56,8 +56,8 @@ RSpec.describe Scoring do
         end
       end
 
-      %w[1 -23 "puppy" false].each do |invalid_input|
-        it "scores invalid input as 0 points" do 
+      %w[1 -23 blank false RR].each do |invalid_input|
+        it "scores invalid input of #{invalid_input} as 0 points" do 
           expect(subject.score_letter(invalid_input)).to eq 0
         end 
       end 
@@ -117,8 +117,8 @@ RSpec.describe Scoring do
         end
       end
 
-      %w[1 -23 "puppy" false].each do |invalid_input|
-        it "scores invalid input as 0 points" do 
+      %w[1 -23 blank CH false].each do |invalid_input|
+        it "scores invalid input of #{invalid_input} as 0 points" do 
           expect(subject.score_letter(invalid_input)).to eq 0
         end 
       end
@@ -170,8 +170,8 @@ RSpec.describe Scoring do
         end
       end
 
-      %w[1 -23 "puppy" false].each do |invalid_input|
-        it "scores invalid input as 0 points" do 
+      %w[1 -23 blank false LL].each do |invalid_input|
+        it "scores invalid input of #{invalid_input} as 0 points" do 
           expect(subject.score_letter(invalid_input)).to eq 0
         end 
       end
