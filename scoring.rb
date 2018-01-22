@@ -4,114 +4,114 @@ class Scoring
 
   def initialize(language=:english)
     @language = language
-    self.choose_cypher
+    @scoring_cypher = self.choose_cypher
   end 
+
+  def score_letter(letter)
+    @scoring_cypher.has_key?(letter) ? @scoring_cypher[letter] : 0   
+  end
     
   def choose_cypher
 
-    english_cypher = {
-      "A" => 1,
-      "B" => 3,
-      "C" => 3,
-      "D" => 2,
-      "E" => 1,
-      "F" => 4,
-      "G" => 2,
-      "H" => 4,
-      "I" => 1,
-      "J" => 8,
-      "K" => 5,
-      "L" => 1,
-      "M" => 3,
-      "N" => 1,
-      "O" => 1,
-      "P" => 3,
-      "Q" => 10,
-      "R" => 1,
-      "S" => 1,
-      "T" => 1,
-      "U" => 1,
-      "V" => 4,
-      "W" => 4,
-      "Y" => 4,
-      "X" => 8,
-      "Z" => 10,
-      }
+    languages = {
+
+      english:  {
+        "A" => 1,
+        "B" => 3,
+        "C" => 3,
+        "D" => 2,
+        "E" => 1,
+        "F" => 4,
+        "G" => 2,
+        "H" => 4,
+        "I" => 1,
+        "J" => 8,
+        "K" => 5,
+        "L" => 1,
+        "M" => 3,
+        "N" => 1,
+        "O" => 1,
+        "P" => 3,
+        "Q" => 10,
+        "R" => 1,
+        "S" => 1,
+        "T" => 1,
+        "U" => 1,
+        "V" => 4,
+        "W" => 4,
+        "Y" => 4,
+        "X" => 8,
+        "Z" => 10,
+        },
+    
+      spanish: {
+        "A" =>  1,
+        "B" =>  3,
+        "C" =>  2,
+        "D" =>  2,
+        "E" =>  1,
+        "F" =>  4,
+        "G" =>  2,
+        "H" =>  4,
+        "I" =>  1,
+        "J" =>  6,
+        "K" =>  8,
+        "L" =>  1,
+        "LL" => 8,
+        "M" =>  3,
+        "N" =>  1,
+        "Ñ" =>  8,
+        "O" =>  1,
+        "P" =>  3,
+        "Q" =>  8,
+        "R" =>  1,
+        "RR" => 8,
+        "S" =>  1,
+        "T" =>  1,
+        "U" =>  1,
+        "V" =>  4,
+        "W" =>  8,
+        "X" =>  8,
+        "Y" =>  4,
+        "Z" =>  10,
+        },
   
-    spanish_cypher = {
-      "A" =>  1,
-      "B" =>  3,
-      "C" =>  2,
-      "D" =>  2,
-      "E" =>  1,
-      "F" =>  4,
-      "G" =>  2,
-      "H" =>  4,
-      "I" =>  1,
-      "J" =>  6,
-      "K" =>  8,
-      "L" =>  1,
-      "LL" => 8,
-      "M" =>  3,
-      "N" =>  1,
-      "Ñ" =>  8,
-      "O" =>  1,
-      "P" =>  3,
-      "Q" =>  8,
-      "R" =>  1,
-      "RR" => 8,
-      "S" =>  1,
-      "T" =>  1,
-      "U" =>  1,
-      "V" =>  4,
-      "W" =>  8,
-      "X" =>  8,
-      "Y" =>  4,
-      "Z" =>  10,
-      }
+      french: {
+        "A" => 1,
+        "B" => 3,
+        "C" => 3,
+        "D" => 2,
+        "E" => 1,
+        "F" => 4,
+        "G" => 2,
+        "H" => 4,
+        "I" => 1,
+        "J" => 8,
+        "K" => 10,
+        "L" => 1,
+        "M" => 2,
+        "N" => 1,
+        "O" => 1,
+        "P" => 3,
+        "Q" => 8,
+        "R" => 1,
+        "S" => 1,
+        "T" => 1,
+        "U" => 1,
+        "V" => 4,
+        "W" => 10,
+        "X" => 10,
+        "Y" => 10,
+        "Z" => 10,
+        },
+    }
 
-    french_cypher = {
-      "A" => 1,
-      "B" => 3,
-      "C" => 3,
-      "D" => 2,
-      "E" => 1,
-      "F" => 4,
-      "G" => 2,
-      "H" => 4,
-      "I" => 1,
-      "J" => 8,
-      "K" => 10,
-      "L" => 1,
-      "M" => 2,
-      "N" => 1,
-      "O" => 1,
-      "P" => 3,
-      "Q" => 8,
-      "R" => 1,
-      "S" => 1,
-      "T" => 1,
-      "U" => 1,
-      "V" => 4,
-      "W" => 10,
-      "X" => 10,
-      "Y" => 10,
-      "Z" => 10,
-      }
-
-    if @language == :spanish 
-      @scoring_cypher = spanish_cypher
-    elsif @language == :french
-      @scoring_cypher = french_cypher
+    if languages.has_key?(@language)
+      languages[@language]
     else
-      @scoring_cypher = english_cypher 
+      languages[:english] 
     end  
   end 
-
-
-  def score_letter(letter)
-    @scoring_cypher[letter] ? @scoring_cypher[letter] : 0   
-  end
 
 end
 
@@ -133,8 +133,8 @@ TESTS:
 
 Valid / invalid input concerns:
   - What should the response be for invalid letter input, such as words or numbers?
-  - Can it be assumed that the language name will be passed in with a consistent format? I.E. spelling, capitalization? 
-  - Can it be assumed that there are no security risks from input?
+  - Can it be assumed that the language name will be passed in with a consistent format? i.e. spelling, capitalization, data type? 
+  - Can it be assumed that there are no security risks from input (e.g. code injection)?
 
 Edge cases:
   - Are letters reliably going to come in uppercase?
@@ -146,8 +146,11 @@ Refactoring:
   - more separation of concerns: does language justify its own Class? 
 
 Performance:
-  - checking arrays for inclusion vs key/value lookup. I suspect the latter is faster (especially for letters like Q and Z) but can do tests to confirm
-  - case statements vs if / else. Which has the advantage as you add lanuages? We gotta globalize Scrobly before those Scrabble posers can corner the market!
+  - checking arrays for inclusion of something vs key/value lookup. I suspect the latter is faster (especially for letters like Q and Z that are in the last elsif statement) but can do tests to confirm
+  - case statements vs if / else. Which has the advantage as you add lanuages? We gotta globalize Scrobly before those Scrabble posers can corner the market!!
+    -hah! got rid of that potentially long if/else statement entirely by using symbols 
 
+Security:
+  - This would vary by use case, and this code is just a small snippet of a bigger program, but depending on how a user enters their word and whether that word was persisted in the database, there could be opportunities for SQL or script injection. 
 
 =end 
