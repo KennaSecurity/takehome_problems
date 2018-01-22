@@ -177,4 +177,24 @@ RSpec.describe Scoring do
       end
     end 
   end
+
+  describe '#sanitize_and_format' do 
+
+    it "upcases input letters" do 
+      expect(subject.sanitize_and_format("a")).to eq "A"
+    end
+
+    it "removes single quotes from input and upcases the result" do 
+      expect(subject.sanitize_and_format("Here is 'a string'")).to eq "HERE IS A STRING"
+    end 
+
+    it "removes forward and back slashes from input and upcases the result" do 
+      expect(subject.sanitize_and_format(" / and \ ")).to eq "  AND  "
+    end 
+
+    it "removes script tags from input" do 
+      expect(subject.sanitize_and_format("<script> bad things here </script>")).to eq "SCRIPT BAD THINGS HERE SCRIPT"
+    end 
+  end 
+  
 end
