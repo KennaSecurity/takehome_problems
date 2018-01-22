@@ -56,7 +56,7 @@ RSpec.describe Scoring do
         end
       end
 
-      %w[1 -23 puppy false].each do |invalid_input|
+      %w[1 -23 "puppy" false].each do |invalid_input|
         it "scores invalid input as 0 points" do 
           expect(subject.score_letter(invalid_input)).to eq 0
         end 
@@ -117,7 +117,60 @@ RSpec.describe Scoring do
         end
       end
 
-      %w[1 -23 puppy false].each do |invalid_input|
+      %w[1 -23 "puppy" false].each do |invalid_input|
+        it "scores invalid input as 0 points" do 
+          expect(subject.score_letter(invalid_input)).to eq 0
+        end 
+      end
+    end 
+
+    context 'in French' do
+      let (:language) {:french}
+      subject { described_class.new(language) }
+
+      %w[A E O S I U N L R T].each do |letter|
+        it "scores a #{letter} as 1 point" do
+          expect(subject.score_letter(letter))
+            .to eq 1
+        end
+      end
+
+      %w[D G M].each do |letter|
+        it "scores a #{letter} as 2 point" do
+          expect(subject.score_letter(letter))
+            .to eq 2
+        end
+      end
+
+      %w[B C P].each do |letter|
+        it "scores a #{letter} as 3 point" do
+          expect(subject.score_letter(letter))
+            .to eq 3
+        end
+      end
+
+      %w[F H V].each do |letter|
+        it "scores a #{letter} as 4 point" do
+          expect(subject.score_letter(letter))
+            .to eq 4
+        end
+      end
+
+      %w[J Q].each do |letter|
+        it "scores a #{letter} as 8 point" do
+          expect(subject.score_letter(letter))
+            .to eq 8
+        end
+      end
+
+      %w[K W X Y Z].each do |letter|
+        it "scores a #{letter} as 10 point" do
+          expect(subject.score_letter(letter))
+            .to eq 10
+        end
+      end
+
+      %w[1 -23 "puppy" false].each do |invalid_input|
         it "scores invalid input as 0 points" do 
           expect(subject.score_letter(invalid_input)).to eq 0
         end 
