@@ -7,6 +7,7 @@ RSpec.describe Scoring do
 
   describe '#score_letter' do
     context 'in English' do
+      
       %w[A E I O U L N R S T].each do |letter|
         it "scores a #{letter} as 1 point" do
           expect(subject.score_letter(letter))
@@ -178,23 +179,34 @@ RSpec.describe Scoring do
     end 
   end
 
-  describe '#sanitize_and_format' do 
-
-    it "upcases input letters" do 
-      expect(subject.sanitize_and_format("a")).to eq "A"
-    end
+  describe '#sanitize_input' do 
 
     it "removes single quotes from input and upcases the result" do 
-      expect(subject.sanitize_and_format("Here is 'a string'")).to eq "HERE IS A STRING"
+      expect(subject.sanitize_input("Here is 'a string'")).to eq "Here is a string"
     end 
 
     it "removes forward and back slashes from input and upcases the result" do 
-      expect(subject.sanitize_and_format(" / and \ ")).to eq "  AND  "
+      expect(subject.sanitize_input(" / and \ ")).to eq "  and  "
     end 
 
     it "removes script tags from input" do 
-      expect(subject.sanitize_and_format("<script> bad things here </script>")).to eq "SCRIPT BAD THINGS HERE SCRIPT"
+      expect(subject.sanitize_input("<script> bad things here </script>")).to eq "script bad things here script"
     end 
   end 
-  
+
+  describe '#format_input' do 
+
+    it "upcases any lowercase letters" do 
+      expect(subject.format_input("abcd")).to eq "ABCD"
+    end 
+
+    it "removes diacritical marks" do 
+      expect(subject.format_input("À Â Ä")).to eq "A A A"
+    end 
+
+    it "does not remove tilde" do 
+      expect(subject.format_input("Ñ")).to eq "Ñ"
+    end 
+  end 
+
 end
