@@ -7,7 +7,7 @@ RSpec.describe Scoring do
 
   describe '#score_letter' do
     context 'in English' do
-      
+
       %w[A E I O U L N R S T].each do |letter|
         it "scores a #{letter} as 1 point" do
           expect(subject.score_letter(letter))
@@ -201,7 +201,7 @@ RSpec.describe Scoring do
     end 
 
     it "removes diacritical marks" do 
-      expect(subject.format_input("À Â Ä")).to eq "A A A"
+      expect(subject.format_input("À Â Ä Á")).to eq "A A A A"
     end 
 
     it "does not remove tilde" do 
