@@ -4,13 +4,16 @@ class Scoring
 
   def initialize(language=:english)
     @language = language
-    @scoring_cypher = self.choose_cypher
   end 
 
+
   def score_letter(letter)
+    letter = format_input(letter)
+    @scoring_cypher = self.choose_cypher
     @scoring_cypher.has_key?(letter) ? @scoring_cypher[letter] : 0   
   end
     
+
   def choose_cypher
 
     languages = {
@@ -42,7 +45,7 @@ class Scoring
         "Y" => 4,
         "X" => 8,
         "Z" => 10,
-        },
+      },
     
       spanish: {
         "A" =>  1,
@@ -74,7 +77,7 @@ class Scoring
         "X" =>  8,
         "Y" =>  4,
         "Z" =>  10,
-        },
+      },
   
       french: {
         "A" => 1,
@@ -103,7 +106,7 @@ class Scoring
         "X" => 10,
         "Y" => 10,
         "Z" => 10,
-        },
+      },
     }
 
     if languages.has_key?(@language)
@@ -111,6 +114,18 @@ class Scoring
     else
       languages[:english] 
     end  
+  end 
+
+
+  def sanitize_input(letter)
+    unallowed_chars = /[\/\\:"<>'#{}]/
+    letter = letter.to_s.gsub(unallowed_chars, '')
+  end 
+
+  def format_input(letter)
+    letter = sanitize_input(letter)
+    letter.upcase!
+    letter.tr("ÁÉÍÓÚÀÂÄÇÉÈÊËÎÏÔÙÛÜ", "AEIOUAAACEEEEIIOUUU")
   end 
 
 end
@@ -127,26 +142,26 @@ Business Logic:
   - opportunities for improvement: cypher hash?
 
 TESTS:
-  - add tests for letters from each category for the new language
-  - add test for invalid input for the new language
-
+  - add tests for the new language
+    - how many tests is too many? Could potentially check all English letters and then just letters in other languages with values that differ from English
+  - add test for invalid input
 
 Valid / invalid input concerns:
   - What should the response be for invalid letter input, such as words or numbers?
   - Can it be assumed that the language name will be passed in with a consistent format? i.e. spelling, capitalization, data type? 
-  - Can it be assumed that there are no security risks from input (e.g. code injection)?
+  - Are letters reliably going to come in uppercase?
 
 Edge cases:
-  - Are letters reliably going to come in uppercase?
+  - For Spanish and French versions, the rules say it should ignore diacritical marks, so some way to normalize letters
 
 Refactoring:
   - cypher hash for each language, set on initialization
   - why do some lines have 'return' and others don't?
-  - separation of concerns:  should another method first check if the input is in the current alphabet and upcase it?
+  - separation of concerns:  should one method check for valid input while another upcases it?
   - more separation of concerns: does language justify its own Class? 
 
 Performance:
-  - checking arrays for inclusion of something vs key/value lookup. I suspect the latter is faster (especially for letters like Q and Z that are in the last elsif statement) but can do tests to confirm
+  - checking arrays for inclusion of something vs key/value lookup. I suspect the latter is faster (especially for letters like Q and Z that are in the last elsif statement)
   - case statements vs if / else. Which has the advantage as you add lanuages? We gotta globalize Scrobly before those Scrabble posers can corner the market!!
     -hah! got rid of that potentially long if/else statement entirely by using symbols 
 
