@@ -9,8 +9,8 @@ class Scoring
 
   def score_letter(letter)
     letter = format_input(letter)
-    @scoring_cypher = self.choose_cypher
-    @scoring_cypher.has_key?(letter) ? @scoring_cypher[letter] : 0   
+    scoring_cypher = self.choose_cypher
+    scoring_cypher.has_key?(letter) ? scoring_cypher[letter] : 0   
   end
     
 
@@ -164,6 +164,7 @@ Performance:
   - checking arrays for inclusion of something vs key/value lookup. I suspect the latter is faster (especially for letters like Q and Z that are in the last elsif statement)
   - case statements vs if / else. Which has the advantage as you add lanuages? We gotta globalize Scrobly before those Scrabble posers can corner the market!!
     -hah! got rid of that potentially long if/else statement entirely by using symbols 
+  - languages hash as a constant, so it's only created once and accessible from other parts of the code
 
 Security:
   - This would vary by use case, and this code is just a small snippet of a bigger program, but depending on how a user enters their word and whether that word was persisted in the database, there could be opportunities for SQL or script injection. 
