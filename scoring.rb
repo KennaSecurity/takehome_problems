@@ -9,7 +9,6 @@ class Scoring
     return 5 if %w[K].include?(letter)
     return 8 if %w[J X].include?(letter)
     return 10 if %w[Q Z].include?(letter)
-    return 0 else
-    end
+    return 0
   end
 end
