@@ -11,7 +11,7 @@ RSpec.describe Scoring do
       %w[A E I O U L N R S T].each do |letter|
         it "scores a #{letter} as 1 point" do
           expect(subject.score_letter(letter))
-            .to eq 2
+            .to eq 1
         end
       end
 
