@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 class Scoring
+
+  def initialize(language = :english)
+    if language
+      @language = language
+    end
+  end
+  
   def score_letter(letter)
     return 1 if %w[A E I O U L N R S T].include?(letter)
     return 2 if %w[D G].include?(letter)
