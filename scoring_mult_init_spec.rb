@@ -110,7 +110,7 @@ RSpec.describe Scoring do
         end
       end
 
-      %w[Z].each do |letter|
+      %w[z].each do |letter|              # Test for lower case letter
         it "scores a #{letter} as 10 point" do
           expect(subject.score_letter(letter))
               .to eq 10
