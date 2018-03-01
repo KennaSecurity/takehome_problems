@@ -90,6 +90,7 @@ class ScoringHash
 
   def score_letter(letter)
 
+    letter = letter.upcase
     if @dict.keys.include?(@language)
       if @dict[@language].keys.include?(letter)
         @dict[@language][letter]

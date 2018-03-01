@@ -17,6 +17,7 @@ class Scoring
   end
 
   def score_letter(letter)
+    letter = letter.upcase
     if @language == :english
       # Switched to case vs. if-elsif block due to slightly faster runtime on test-cases and ease of reading
       case
