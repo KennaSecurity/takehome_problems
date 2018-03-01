@@ -119,7 +119,7 @@ RSpec.describe Scoring do
     end
 
     context 'in Wrong Language' do
-      subject { described_class.new(:Japanese) } # Test spanish letters, also for capitalization
+      subject { described_class.new(:Japanese) } # Test for incorrect language
       %w[A].each do |letter|
         it "scores a #{letter} as 0 points" do
           expect(subject.score_letter(letter))
@@ -236,7 +236,7 @@ RSpec.describe ScoringHash do
         end
       end
 
-      %w[Z].each do |letter|
+      %w[z].each do |letter|              # Test for lower case letter
         it "scores a #{letter} as 10 point" do
           expect(subject.score_letter(letter))
               .to eq 10
