@@ -1,6 +1,25 @@
 # frozen_string_literal: true
 
 class Scoring
+  ENGLISH_LETTER_SCORES = {
+    %w[A E I O U L N R S T] => 1,
+    %w[D G]                 => 2,
+    %w[B C M P]             => 3,
+    %w[F H V W Y]           => 4,
+    %w[K]                   => 5,
+    %w[J X]                 => 8,
+    %w[Q Z]                 => 10
+  }
+  SPANISH_LETTER_SCORES = {
+    %w[A E O S I U N L R T] => 1,
+    %w[C D G]               => 2,
+    %w[B M P]               => 3,
+    %w[F H V Y]             => 4,
+    %w[J]                   => 6,
+    %w[K LL Ñ Q RR W X]     => 8,
+    %w[Z]                   => 10
+  }
+
   attr_reader :language
 
   def initialize(language = :english)
@@ -20,24 +39,16 @@ class Scoring
   private
 
   def score_spanish_letter(letter)
-    return 1 if %w[A E O S I U N L R T].include?(letter)
-    return 2 if %w[C D G].include?(letter)
-    return 3 if %w[B M P].include?(letter)
-    return 4 if %w[F H V Y].include?(letter)
-    return 6 if %w[J].include?(letter)
-    return 8 if %w[K LL Ñ Q RR W X].include?(letter)
-    return 10 if %w[Z].include?(letter)
-    0
+    SPANISH_LETTER_SCORES.each do |letter_group, score|
+      return score if letter_group.include?(letter)
+      0
+    end
   end
 
   def score_english_letter(letter)
-    return 1 if %w[A E I O U L N R S T].include?(letter)
-    return 2 if %w[D G].include?(letter)
-    return 3 if %w[B C M P].include?(letter)
-    return 4 if %w[F H V W Y].include?(letter)
-    return 5 if %w[K].include?(letter)
-    return 8 if %w[J X].include?(letter)
-    return 10 if %w[Q Z].include?(letter)
-    0
+    ENGLISH_LETTER_SCORES.each do |letter_group, score|
+      return score if letter_group.include?(letter)
+      0
+    end
   end
 end
