@@ -3,7 +3,7 @@
 class Scoring
   attr_reader :language
 
-  def initialize(language='')
+  def initialize(language = :english)
     @language = language
   end
 
@@ -17,7 +17,7 @@ class Scoring
       return 8 if %w[K LL Ñ Q RR W X].include?(letter)
       return 10 if %w[Z].include?(letter)
       0
-    elsif language.downcase == ''
+    elsif language.downcase == :english
       return 1 if %w[A E I O U L N R S T].include?(letter)
       return 2 if %w[D G].include?(letter)
       return 3 if %w[B C M P].include?(letter)
