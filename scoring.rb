@@ -41,14 +41,14 @@ class Scoring
   def score_spanish_letter(letter)
     SPANISH_LETTER_SCORES.each do |letter_group, score|
       return score if letter_group.include?(letter)
-      0
     end
+    0
   end
 
   def score_english_letter(letter)
     ENGLISH_LETTER_SCORES.each do |letter_group, score|
       return score if letter_group.include?(letter)
-      0
     end
+    0
   end
 end
