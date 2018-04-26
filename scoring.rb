@@ -9,7 +9,14 @@ class Scoring
 
   def score_letter(letter)
     if language.downcase == :spanish
-
+      return 1 if %w[A E O S I U N L R T].include?(letter)
+      return 2 if %w[C D G].include?(letter)
+      return 3 if %w[B M P].include?(letter)
+      return 4 if %w[F H V Y].include?(letter)
+      return 6 if %w[J].include?(letter)
+      return 8 if %w[K LL Ñ Q RR W X].include?(letter)
+      return 10 if %w[Z].include?(letter)
+      0
     elsif language.downcase == ''
       return 1 if %w[A E I O U L N R S T].include?(letter)
       return 2 if %w[D G].include?(letter)
