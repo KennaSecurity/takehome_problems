@@ -111,4 +111,24 @@ RSpec.describe Scoring do
       end
     end
   end
+
+  describe '#language settings' do
+    context "English language setting" do
+      it "defaults to English tile set when no other language input is set" do
+        expect(subject.language).to be :english
+      end
+
+      it "should return an integer for English inputs" do
+        expect(subject.score_letter("A")).to be_a(Integer)
+        expect(subject.score_letter("B")).to be_a(Integer)
+      end
+
+      it "recognizes bad letter input" do
+        expect(subject.score_letter("RR")).to be 0
+        expect(subject.score_letter(7)).to be 0
+      end
+    end
+
+
+  end
 end
