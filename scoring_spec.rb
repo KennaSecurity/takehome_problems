@@ -129,6 +129,25 @@ RSpec.describe Scoring do
       end
     end
 
+    context "Spanish language setting" do
+      language = :spanish
+      subject { described_class.new(language: language) }
+
+      it "switches from default English to Spanish tile set when intialized with new language setting" do
+        expect(subject.language).to be :spanish
+      end
+
+      it "should return an integer for Spanish inputs" do
+        expect(subject.score_letter("A")).to be_a(Integer)
+        expect(subject.score_letter("B")).to be_a(Integer)
+        expect(subject.score_letter("Ñ")).to be_a(Integer)
+      end
+
+      it "recognizes bad letter input" do
+        expect(subject.score_letter("TTT")).to be 0
+        expect(subject.score_letter(7)).to be 0
+      end
+    end
 
   end
 end
