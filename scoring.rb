@@ -41,7 +41,7 @@ class Scoring
         return score
       end
     end
-    return 0
+    0
   end
 
   private
