@@ -26,9 +26,12 @@ class Scoring
     10 => %w[Z]
   }
 
+  VALID_LANGUAGES = [:english, :spanish]
+
 # defaults to english if no language parameter is provided upon initialization
   def initialize(args={})
     @language = args[:language] || :english
+    validate!
   end
 
 # considered returning an ArgumentError here instead of 0 but decided against it since the 0 provides greater flexibility as features are built out
@@ -43,6 +46,7 @@ class Scoring
 
   private
 
+# sets tile set according to language parameter
   def tile_set
     case language
       when :english
@@ -50,6 +54,11 @@ class Scoring
       when :spanish
         SPANISH_TILE_SET
     end
+  end
+
+# validates that language parameter is one of the available languages, otherwise raises exception
+  def validate!
+    raise ArgumentError.new("Invalid language setting") unless VALID_LANGUAGES.include?(language)
   end
 
 end
