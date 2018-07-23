@@ -56,7 +56,7 @@ class Scoring
     end
   end
 
-# validates that language parameter is one of the available languages, otherwise raises exception
+# validates that language parameter is one of the available languages, otherwise raises exception with message
   def validate!
     raise ArgumentError.new("Invalid language setting") unless VALID_LANGUAGES.include?(language)
   end
