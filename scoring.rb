@@ -16,6 +16,16 @@ class Scoring
     10 => %w[Q Z]
   }
 
+    SPANISH_TILE_SET = {
+    1 => %w[A E I O U L N R S T],
+    2 => %w[C D G],
+    3 => %w[B M P],
+    4 => %w[F H V Y],
+    6 => %w[J],
+    8 => %w[K LL Ñ Q RR W X],
+    10 => %w[Z]
+  }
+
 # defaults to english if no language parameter is provided upon initialization
   def initialize(args={})
     @language = args[:language] || :english
@@ -23,12 +33,23 @@ class Scoring
 
 # considered returning an ArgumentError here instead of 0 but decided against it since the 0 provides greater flexibility as features are built out
   def score_letter(letter)
-    ENGLISH_TILE_SET.each do |score, tiles|
+    tile_set.each do |score, tiles|
       if tiles.include?(letter)
         return score
       end
     end
     return 0
+  end
+
+  private
+
+  def tile_set
+    case language
+      when :english
+        ENGLISH_TILE_SET
+      when :spanish
+        SPANISH_TILE_SET
+    end
   end
 
 end
