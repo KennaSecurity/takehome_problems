@@ -151,7 +151,7 @@ RSpec.describe Scoring do
 
     context "invalid language setting" do
       it "raises an exception for invalid language setting" do
-        expect { Scoring.new(language: :french) }.to raise_error(ArgumentError)
+        expect { Scoring.new(language: :french) }.to raise_error(ArgumentError, "Invalid language setting")
       end
     end
   end
