@@ -14,42 +14,42 @@ RSpec.describe Scoring do
       end
 
       %w[D G].each do |letter|
-        it "scores a #{letter} as 2 point" do
+        it "scores a #{letter} as 2 points" do
           expect(subject.score_letter(letter))
             .to eq 2
         end
       end
 
       %w[B C M P].each do |letter|
-        it "scores a #{letter} as 3 point" do
+        it "scores a #{letter} as 3 points" do
           expect(subject.score_letter(letter))
             .to eq 3
         end
       end
 
       %w[F H V W Y].each do |letter|
-        it "scores a #{letter} as 4 point" do
+        it "scores a #{letter} as 4 points" do
           expect(subject.score_letter(letter))
             .to eq 4
         end
       end
 
       %w[K].each do |letter|
-        it "scores a #{letter} as 5 point" do
+        it "scores a #{letter} as 5 points" do
           expect(subject.score_letter(letter))
             .to eq 5
         end
       end
 
       %w[J X].each do |letter|
-        it "scores a #{letter} as 8 point" do
+        it "scores a #{letter} as 8 points" do
           expect(subject.score_letter(letter))
             .to eq 8
         end
       end
 
       %w[Q Z].each do |letter|
-        it "scores a #{letter} as 10 point" do
+        it "scores a #{letter} as 10 points" do
           expect(subject.score_letter(letter))
             .to eq 10
         end
@@ -67,7 +67,7 @@ RSpec.describe Scoring do
       end
 
       %w[C D G].each do |letter|
-        it "scores a #{letter} as 2 point" do
+        it "scores a #{letter} as 2 points" do
           # skip
           expect(subject.score_letter(letter))
             .to eq 2
@@ -75,7 +75,7 @@ RSpec.describe Scoring do
       end
 
       %w[B M P].each do |letter|
-        it "scores a #{letter} as 3 point" do
+        it "scores a #{letter} as 3 points" do
           # skip
           expect(subject.score_letter(letter))
             .to eq 3
@@ -83,7 +83,7 @@ RSpec.describe Scoring do
       end
 
       %w[F H V Y].each do |letter|
-        it "scores a #{letter} as 4 point" do
+        it "scores a #{letter} as 4 points" do
           # skip
           expect(subject.score_letter(letter))
             .to eq 4
@@ -91,7 +91,7 @@ RSpec.describe Scoring do
       end
 
       %w[J].each do |letter|
-        it "scores a #{letter} as 5 point" do
+        it "scores a #{letter} as 6 points" do
           # skip
           expect(subject.score_letter(letter))
             .to eq 6
@@ -99,7 +99,7 @@ RSpec.describe Scoring do
       end
       
       %w[K LL Ñ Q RR W X].each do |letter|
-        it "scores a #{letter} as 8 point" do
+        it "scores a #{letter} as 8 points" do
           # skip
           expect(subject.score_letter(letter))
             .to eq 8
@@ -107,7 +107,7 @@ RSpec.describe Scoring do
       end
 
       %w[Z].each do |letter|
-        it "scores a #{letter} as 10 point" do
+        it "scores a #{letter} as 10 points" do
           # skip
           expect(subject.score_letter(letter))
             .to eq 10
