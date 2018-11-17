@@ -58,7 +58,20 @@ RSpec.describe Scoring do
     end
 
     context 'in Spanish' do
-      pending 'deliverable'
+      %w[A E O S I U N L R T].each do |letter|
+        it "scores a #{letter} as 1 point" do
+          expect(subject.score_letter(letter))
+            .to  eq 1
+        end
+      end
+
+    #   %w[C D G].each do |letter|
+    #     it "scores a #{letter} as 2 point" do
+    #       expect(subject.score_letter(letter))
+    #         .to eq 2
+    #     end
+    #   end
     end
+
   end
 end
