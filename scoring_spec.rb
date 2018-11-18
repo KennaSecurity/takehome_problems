@@ -74,6 +74,40 @@ RSpec.describe Scoring do
         end
       end
 
+      %w[B M P].each do |letter|
+        it "scores a #{letter} as 3 point" do
+          expect(subject.score_letter(letter))
+            .to eq 3
+        end
+      end
+
+      %w[F H V Y].each do |letter|
+        it "scores a #{letter} as 4 point" do
+          expect(subject.score_letter(letter))
+            .to eq 4
+        end
+      end
+
+      %w[J].each do |letter|
+        it "scores a #{letter} as 6 point" do
+          expect(subject.score_letter(letter))
+            .to eq 6
+        end
+      end
+
+      %w[K LL Ñ Q RR W X].each do |letter|
+        it "scores a #{letter} as 8 point" do
+          expect(subject.score_letter(letter))
+            .to eq 8
+        end
+      end
+
+      %w[Z].each do |letter|
+        it "scores a #{letter} as 10 point" do
+          expect(subject.score_letter(letter))
+            .to eq 10
+        end
+      end
     end
 
   end
