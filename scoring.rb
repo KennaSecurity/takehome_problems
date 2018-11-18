@@ -2,13 +2,12 @@
 require './score_key'
 
 class Scoring
-
   def initialize(language = ENGLISH)
     @score_key = handle_language(language)
   end
 
   def score_letter(letter)
-    @score_key.each {|key, value| return key if value.include?(letter)}
+    @score_key.each {|key, value| return key if value.include?(letter.upcase)}
   end
 
   def handle_language(language)

@@ -109,5 +109,16 @@ RSpec.describe Scoring do
         end
       end
     end
+
+    context 'in downcase' do
+      language = :spanish
+      subject { described_class.new(language) }
+      %w[a e o s i u n l r t].each do |letter|
+        it "scores a #{letter} as 1 point" do
+          expect(subject.score_letter(letter))
+            .to  eq 1
+        end
+      end
+    end
   end
 end
