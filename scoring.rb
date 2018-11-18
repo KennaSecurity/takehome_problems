@@ -3,23 +3,23 @@
 class Scoring
 
   ENGLISH = {
-    1 => ["E", "A", "I", "O", "N", "R", "T", "L", "S", "U"],
-    2 => ["D", "G"],
-    3 => ["B", "C", "M", "P"],
-    4 => ["F", "H", "V", "W", "Y"],
-    5 => ["K"],
-    8 => ["J", "X"],
-    10 => ["Q", "Z"]
+    1 => %w[A E I O U L N R S T],
+    2 => %w[D G],
+    3 => %w[B C M P],
+    4 => %w[F H V W Y],
+    5 => %w[K],
+    8 => %w[J X],
+    10 => %w[Q Z]
   }
 
   SPANISH = {
-    1 => ["A", "E", "O", "S", "I", "U", "N", "L", "R", "T"],
-    2 => ["C", "D", "G"],
-    3 => ["B", "M", "P"],
-    4 => ["F", "H", "V", "Y"],
-    6 => ["J"],
-    8 => ["K", "LL", "Ñ", "Q", "RR", "W", "X"],
-    10 => ["Z"]
+    1 => %w[A E O S I U N L R T],
+    2 => %w[C D G],
+    3 => %w[B M P],
+    4 => %w[F H V Y],
+    6 => %w[J],
+    8 => %w[K LL Ñ Q RR W X],
+    10 => %w[Z]
   }
 
   def initialize(language = nil)
