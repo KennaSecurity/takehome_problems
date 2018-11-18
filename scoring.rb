@@ -15,9 +15,3 @@ class Scoring
     language
   end
 end
-
-
-
-
-
-
