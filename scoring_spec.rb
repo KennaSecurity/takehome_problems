@@ -73,6 +73,7 @@ RSpec.describe Scoring do
             .to eq 2
         end
       end
+
     end
 
   end
