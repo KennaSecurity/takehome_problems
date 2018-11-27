@@ -7,9 +7,9 @@ class Scoring
   end
 
   def create_scores(language)
-    if language.downcase == 'english'
+    if language == :english
       english_scores
-    elsif language.downcase == 'spanish'
+    elsif language == :spanish
       spanish_scores
     else
       'Please type in English or Spanish'

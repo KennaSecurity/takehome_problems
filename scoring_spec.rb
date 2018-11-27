@@ -3,8 +3,8 @@
 require_relative 'scoring'
 
 RSpec.describe Scoring do
-  english_lang = 'English'
-  spanish_lang = 'Spanish'
+  english_lang = :english
+  spanish_lang = :spanish
 
   describe '#score_letter' do
     context 'in English' do
