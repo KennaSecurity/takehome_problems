@@ -2,8 +2,8 @@
 
 class Scoring
   def initialize(language)
-    @language = create_scores(language)
     @scores = {}
+    @language = create_scores(language)
   end
 
   def create_scores(language)
