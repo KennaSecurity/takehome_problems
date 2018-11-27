@@ -68,42 +68,42 @@ RSpec.describe Scoring do
         end
       end
 
-      pending %w[C D G].each do |letter|
+      %w[C D G].each do |letter|
         it "scores a #{letter} as 2 point" do
           expect(subject.score_letter(letter))
             .to eq 2
         end
       end
 
-      pending %w[B M P].each do |letter|
+      %w[B M P].each do |letter|
         it "scores a #{letter} as 3 point" do
           expect(subject.score_letter(letter))
             .to eq 3
         end
       end
 
-      pending %w[F H V Y].each do |letter|
+      %w[F H V Y].each do |letter|
         it "scores a #{letter} as 4 point" do
           expect(subject.score_letter(letter))
             .to eq 4
         end
       end
 
-      pending %w[J].each do |letter|
+      %w[J].each do |letter|
         it "scores a #{letter} as 6 point" do
           expect(subject.score_letter(letter))
             .to eq 6
         end
       end
 
-      pending %w[K LL Ñ Q RR W X].each do |letter|
+      %w[K LL Ñ Q RR W X].each do |letter|
         it "scores a #{letter} as 8 point" do
           expect(subject.score_letter(letter))
             .to eq 8
         end
       end
 
-      pending %w[Z].each do |letter|
+      %w[Z].each do |letter|
         it "scores a #{letter} as 10 point" do
           expect(subject.score_letter(letter))
             .to eq 10
