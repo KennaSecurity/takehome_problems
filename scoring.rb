@@ -9,6 +9,8 @@ class Scoring
   def create_scores(language)
     if language.downcase == 'english'
       english_scores
+    elsif language.downcase == 'spanish'
+      spanish_scores
     else
       'Please type in English or Spanish'
     end
@@ -40,6 +42,36 @@ class Scoring
     }
 
     %w[Q Z].each_with_index { |item, index|
+      @scores[item] = 10
+    }
+  end
+
+  def spanish_scores
+    %w[A E I O U L N R S T].each_with_index { |item, index|
+      @scores[item] = 1
+    }
+
+    %w[C D G].each_with_index { |item, index|
+      @scores[item] = 2
+    }
+
+    %w[B M P].each_with_index { |item, index|
+      @scores[item] = 3
+    }
+
+    %w[F H V Y].each_with_index { |item, index|
+      @scores[item] = 4
+    }
+
+    %w[J].each_with_index { |item, index|
+      @scores[item] = 6
+    }
+
+    %w[K LL Ñ Q RR W X].each_with_index { |item, index|
+      @scores[item] = 8
+    }
+
+    %w[Z].each_with_index { |item, index|
       @scores[item] = 10
     }
   end
