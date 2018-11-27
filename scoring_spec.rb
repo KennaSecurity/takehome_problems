@@ -3,10 +3,12 @@
 require_relative 'scoring'
 
 RSpec.describe Scoring do
-  subject { described_class.new('English') }
+  english_lang = 'English'
+  spanish_lang = 'Spanish'
 
   describe '#score_letter' do
     context 'in English' do
+      subject { described_class.new(english_lang) }
       %w[A E I O U L N R S T].each do |letter|
         it "scores a #{letter} as 1 point" do
           expect(subject.score_letter(letter))
@@ -58,7 +60,8 @@ RSpec.describe Scoring do
     end
 
     context 'in Spanish' do
-      pending %w[A E I O U L N R S T].each do |letter|
+      subject { described_class.new(spanish_lang) }
+      %w[A E I O U L N R S T].each do |letter|
         it "scores a #{letter} as 1 point" do
           expect(subject.score_letter(letter))
             .to eq 1
@@ -89,11 +92,11 @@ RSpec.describe Scoring do
       pending %w[J].each do |letter|
         it "scores a #{letter} as 6 point" do
           expect(subject.score_letter(letter))
-            .to eq 5
+            .to eq 6
         end
       end
 
-      pending %w[K, LL, Ñ, Q, RR, W, X].each do |letter|
+      pending %w[K LL Ñ Q RR W X].each do |letter|
         it "scores a #{letter} as 8 point" do
           expect(subject.score_letter(letter))
             .to eq 8
