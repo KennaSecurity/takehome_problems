@@ -6,10 +6,10 @@ class Scoring
     @score_key = handle_language(language)
   end
 
-    def handle_language(language)
-      return SPANISH if language == :spanish
-      language
-    end
+  def handle_language(language)
+    return SPANISH if language == :spanish
+    language
+  end
 
   def score_letter(letter)
     return @score[letter.upcase] if defined? @score[letter.upcase]
