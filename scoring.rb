@@ -16,9 +16,9 @@ class Scoring
   end
 
   def fixed_score
-    return @fixed_score if @fixed_score
+  return @fixed_score if @fixed_score
     @fixed_score = {}
-    @score_key.each do |score , letters|
+    @score_key.each do |score, letters|
       letters.each do |letter|
         @fixed_score[letter]= score
       end
