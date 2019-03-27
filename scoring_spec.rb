@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#require_relative 'scoring'
+require_relative 'scoring'
 
 RSpec.describe Scoring do
   subject { described_class.new }
@@ -57,6 +57,7 @@ RSpec.describe Scoring do
       end
     end
 
+    #I am not familiar with testing at all so I just added the Spanish version for now
     context 'in Spanish' do
       %w[A E O S I U N L R T].each do |letter|
         it "scores a #{letter} as 1 point" do
