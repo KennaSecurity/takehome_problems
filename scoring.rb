@@ -32,24 +32,21 @@ class Scoring
   #used helper method to find version and make score_letter method simpler
   def find_version
     if @language == :english
-      @version = ENGLISH
+      ENGLISH
     elsif @language == :spanish
-      @version = SPANISH
+      SPANISH
     end
   end
 
-  #simplified method by using @version, added an error message for wrong input
+  #simplified method by refactoring with find_verison, added an error message for wrong input
   def score_letter(letter)
-    find_version
-    if @version
-      @version.map do |point, list| 
-        if list.include?(letter)
+    if ver = find_version
+      ver.map do |point, list| 
+        if list.include?(letter.upcase)
           return point
-        else
-          0
         end
       end
-
+      return 0
     else
       return "We do not have this language available yet"  
     end
