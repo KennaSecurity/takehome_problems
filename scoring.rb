@@ -29,25 +29,26 @@ class Scoring
     @language = language
   end
 
-  #simplified method by using constants, added an error message for wrong input
-  #too repetitive -> find the language input in our constant set??
+  #used helper method to find version and make score_letter method simpler
+  def find_version
+    if @language == :english
+      @version = ENGLISH
+    elsif @language == :spanish
+      @version = SPANISH
+    end
+  end
+
+  #simplified method by using @version, added an error message for wrong input
   def score_letter(letter)
-    if @language == :english 
-      ENGLISH.map do |point, l| 
-        if l.include?(letter)
+    find_version
+    if @version
+      @version.map do |point, list| 
+        if list.include?(letter)
           return point
         else
           0
         end
       end
-
-    elsif @language == :spanish
-      SPANISH.map do |point, l| 
-        if l.include?(letter)
-          return point
-        else
-          0
-        end
 
     else
       return "We do not have this language available yet"  
