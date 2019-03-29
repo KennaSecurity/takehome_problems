@@ -25,7 +25,7 @@ class Scoring
   }
 
   #initialized language with a default value of :english
-  def initialize(language == :english)
+  def initialize(language = :english)
     @language = language
   end
 

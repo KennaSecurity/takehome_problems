@@ -59,6 +59,8 @@ RSpec.describe Scoring do
 
     #I am not familiar with testing at all so I just added the Spanish version for now
     context 'in Spanish' do
+      subject {described_class.new(:spanish)}
+      
       %w[A E O S I U N L R T].each do |letter|
         it "scores a #{letter} as 1 point" do
           expect(subject.score_letter(letter))
