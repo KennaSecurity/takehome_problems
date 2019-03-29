@@ -42,7 +42,7 @@ class Scoring
   def score_letter(letter)
     if ver = find_version
       ver.map do |point, list| 
-        if list.include?(letter.upcase)
+        if list.include?(letter.to_s.upcase)
           return point
         end
       end
