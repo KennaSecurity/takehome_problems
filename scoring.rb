@@ -51,4 +51,11 @@ class Scoring
       return "We do not have this language available yet"  
     end
   end
+
+  def score_word(word)
+    arr = word.split('')
+    arr.inject(0) do |sum, letter|
+      sum + score_letter(letter)
+    end
+  end
 end

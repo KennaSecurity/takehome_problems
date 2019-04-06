@@ -5,6 +5,18 @@ require_relative 'scoring'
 RSpec.describe Scoring do
   subject { described_class.new }
 
+  describe '#score_word' do
+    it "scores the total of each letter for word" do
+      expect(subject.score_word("hello"))
+        .to eq 8
+    end
+
+    it "scores the total of each letter for word in spanish" do
+      expect(described_class.new(:spanish).score_word("hello"))
+        .to eq 14
+    end
+  end
+
   describe '#score_letter' do
     context 'in English' do
       %w[A E I O U L N R S T].each do |letter|
