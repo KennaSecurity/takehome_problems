@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Scoring
   attr_accessor :language
 
@@ -39,23 +37,46 @@ class Scoring
   end
 
   #simplified method by refactoring with find_verison, added an error message for wrong input
-  def score_letter(letter)
+  def score_letter(ver, letter)
+    ver.map do |point, list| 
+      if list.include?(letter.to_s)
+        return point
+      end
+    end
+    return 0  
+  end
+
+  def score_word(word)  
     if ver = find_version
-      ver.map do |point, list| 
-        if list.include?(letter.to_s.upcase)
-          return point
+      multipleLetters = []
+      arr = word.upcase.split('')
+
+      #checking if language has letters that are longer than 1
+      ver.values.each do |array| 
+        array.each do |letter|
+          if letter.length > 1
+            multipleLetters << letter
+          end
         end
       end
-      return 0
+
+      # joined letters that are longer than 1 in word arr
+      multipleLetters.each do |let|
+        if word.upcase.include?(let)
+          idx = arr.index(let[0])
+          arr << arr[idx..idx+(let.length-1)].join
+          let.length.times do |i|
+            arr.delete_at(idx)
+          end                   
+        end
+      end
+
+      arr.inject(0) do |sum, letter|
+        sum + score_letter(ver, letter)
+      end
     else
       return "We do not have this language available yet"  
     end
-  end
-
-  def score_word(word)
-    arr = word.split('')
-    arr.inject(0) do |sum, letter|
-      sum + score_letter(letter)
-    end
+    
   end
 end
