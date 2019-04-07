@@ -64,10 +64,7 @@ class Scoring
       multipleLetters.each do |let|
         if word.upcase.include?(let)
           idx = arr.index(let[0])
-          arr << arr[idx..idx+(let.length-1)].join
-          let.length.times do |i|
-            arr.delete_at(idx)
-          end                   
+          arr[idx..idx+(let.length-1)] = let                 
         end
       end
 
