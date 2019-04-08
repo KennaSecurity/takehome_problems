@@ -60,12 +60,12 @@ class Scoring
         end  
       end
     
-      # joined letters that are longer than 1 in word arr 
+      # joining letters that are longer than 1 in word arr 
       multipleLetters.each do |let|
         idx = -1
         arr.each do |l|
           idx += 1
-          if l == arr[idx + 1] && let[0] == l
+          if arr[idx..idx + 1].join('') == let
             arr[idx..idx+(let.length-1)] = let
           end 
         end 
