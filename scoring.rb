@@ -50,30 +50,32 @@ class Scoring
     if ver = find_version
       multipleLetters = []
       arr = word.upcase.split('')
-
+     
       #checking if language has letters that are longer than 1
       ver.values.each do |array| 
         array.each do |letter|
           if letter.length > 1
             multipleLetters << letter
           end
-        end
+        end  
       end
-
-      # joined letters that are longer than 1 in word arr
+    
+      # joined letters that are longer than 1 in word arr 
       multipleLetters.each do |let|
-        if word.upcase.include?(let)
-          idx = arr.index(let[0])
-          arr[idx..idx+(let.length-1)] = let                 
-        end
-      end
+        idx = -1
+        arr.each do |l|
+          idx += 1
+          if l == arr[idx + 1] && let[0] == l
+            arr[idx..idx+(let.length-1)] = let
+          end 
+        end 
+      end 
 
       arr.inject(0) do |sum, letter|
         sum + score_letter(ver, letter)
       end
     else
       return "We do not have this language available yet"  
-    end
-    
+    end   
   end
 end
