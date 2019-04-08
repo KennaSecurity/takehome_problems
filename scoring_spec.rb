@@ -15,6 +15,16 @@ RSpec.describe Scoring do
       expect(described_class.new(:spanish).score_word("hello"))
         .to eq 14
     end
+
+    it "scores total with multiple double letters in word" do
+      expect(described_class.new(:spanish).score_word("hrrelloll"))
+        .to eq 30
+    end
+
+    it "scores the right total with single and double letters that are the same in word" do
+      expect(described_class.new(:spanish).score_word("hlello"))
+        .to eq 15 
+    end
   end
 
   describe '#score_letter' do
