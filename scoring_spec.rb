@@ -3,7 +3,8 @@
 require_relative 'scoring'
 
 RSpec.describe Scoring do
-  subject { described_class.new }
+  let(:subject) { described_class.new }
+  let(:spanish_subject) {described_class.new(:spanish)}
 
   describe '#score_letter' do
     context 'in English' do
