@@ -56,6 +56,13 @@ RSpec.describe Scoring do
             .to eq 10
         end
       end
+
+      %w[a e o].each do |letter|
+        it "scores a #{letter} as 10 point" do
+          expect(subject.score_letter(letter))
+            .to eq 1
+        end
+      end
     end
 
     context 'in Spanish' do
