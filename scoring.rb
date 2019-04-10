@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Scoring
+  attr_reader :point_table
 
   # Hash object containing language letter-value pairs
   Languages = {
