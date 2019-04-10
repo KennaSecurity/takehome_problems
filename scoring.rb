@@ -24,6 +24,11 @@ class Scoring
     }
   }
 
+  # Initializer, instantiating new objects with a language relevant point table
+  def initialize(language = :english)
+    @point_table = language
+  end
+
   def score_letter(letter)
     if %w[A E I O U L N R S T].include?(letter)
       return 1
