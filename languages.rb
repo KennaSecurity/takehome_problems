@@ -11,7 +11,7 @@ class Language
       %w[J] => 6,
       %w[K LL Ñ Q RR W X] => 8,
       %w[Z] => 10
-    },
+    }.freeze,
     :english  => {
       %w[E A I O N R T L S U] => 1,
       %w[D G] => 2,
@@ -20,8 +20,8 @@ class Language
       %w[K] => 5,
       %w[J X] => 8,
       %w[Q Z] => 10
-    }
-  }
+    }.freeze
+  }.freeze
 
   # Initializer, instantiating new Language instance containing relevant point table
   def initialize(language)
@@ -32,4 +32,5 @@ class Language
   def get
     self.language_table
   end
+  
 end
