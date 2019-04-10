@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 require_relative 'languages'
 
 class Scoring
@@ -29,4 +28,5 @@ class Scoring
       0
     end
   end
+
 end

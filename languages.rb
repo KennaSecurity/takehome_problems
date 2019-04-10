@@ -1,4 +1,4 @@
-Class Languages
+class Language
   
 # Hash object containing language letter-value pairs
   Languages = {
@@ -26,6 +26,4 @@ Class Languages
   def initialize(language)
     @language_table = Languages[language]
   end
-
-
 end
