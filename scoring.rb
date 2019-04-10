@@ -2,6 +2,7 @@
 
 class Scoring
 
+      # Hash object containing language letter-value pairs
       Languages = {
         :spanish => {
           %w[A E O S I U N L R T] => 1,
