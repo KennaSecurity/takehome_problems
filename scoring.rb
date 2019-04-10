@@ -6,7 +6,7 @@ class Scoring
 
   # Initializer, instantiating new objects with a language relevant point table
   def initialize(language = :english)
-    @point_table = Language.new(language)
+    @point_table = Language.new(language).get
   end
 
   def score_letter(letter)

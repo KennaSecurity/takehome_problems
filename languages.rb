@@ -1,6 +1,7 @@
 class Language
+   attr_reader :language_table
   
-# Hash object containing language letter-value pairs
+  # Hash object containing language letter-value pairs
   Languages = {
     :spanish => {
       %w[A E O S I U N L R T] => 1,
@@ -25,5 +26,10 @@ class Language
   # Initializer, instantiating new Language instance containing relevant point table
   def initialize(language)
     @language_table = Languages[language]
+  end
+
+  # Get method allows Scoring instantiation to access relevant language hash
+  def get
+    self.language_table
   end
 end
