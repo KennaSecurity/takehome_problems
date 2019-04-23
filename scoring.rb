@@ -15,6 +15,7 @@ class Scoring
       score_spanish(letter)
     else
       puts "\e[31mcurrently does not support the #{@language} language\e[0m"
+      return nil
     end
   end
 
