@@ -1,58 +1,28 @@
 # frozen_string_literal: true
 
 class Scoring
+  SCORING_HASH = {
+    :english => {
+      "A" => 1, "E" => 1, "I" => 1, "O" => 1, "U" => 1, "L" => 1,
+      "N" => 1, "R" => 1, "S" => 1, "T" => 1, "D" => 2, "G" => 2,
+      "B" => 3, "C" => 3, "M" => 3, "P" => 3, "F" => 4, "H" => 4,
+      "V" => 4, "W" => 4, "Y" => 4, "K" => 5, "J" => 8, "X" => 8,
+      "Q" => 10, "Z" => 10
+    },
+    :spanish => {
+      "A" => 1, "E" => 1, "O" => 1, "S" => 1, "I" => 1, "U" => 1,
+      "N" => 1, "L" => 1, "R" => 1, "T" => 1, "C" => 2, "D" => 2,
+      "G" => 2, "B" => 3, "M" => 3, "P" => 3, "F" => 4, "H" => 4,
+      "V" => 4, "Y" => 4, "J" => 6, "K" => 8, "LL" => 8, "Ñ" => 8,
+      "Q" => 8, "RR" => 8, "W" => 8, "X" => 8, "Z" => 10
+    }
+  }
+
   def initialize(language = :english)
-    @language = language # set language (defaults to english)
+    @language = language # set language setting (defaults to english)
   end
 
   def score_letter(letter)
-    if @language == :english
-      score_english(letter)
-    elsif @language == :spanish
-      score_spanish(letter)
-    else
-      puts "\e[31mcurrently does not support the #{@language} language\e[0m"
-      return nil
-    end
-  end
-
-  def score_english(letter)
-    if %w[A E I O U L N R S T].include?(letter)
-      return 1
-    elsif %w[D G].include?(letter)
-      return 2
-    elsif %w[B C M P].include?(letter)
-      return 3
-    elsif %w[F H V W Y].include?(letter)
-      return 4
-    elsif %w[K].include?(letter)
-      return 5
-    elsif %w[J X].include?(letter)
-      return 8
-    elsif %w[Q Z].include?(letter)
-      return 10
-    else
-      return 0
-    end
-  end
-
-  def score_spanish(letter)
-    if %w[A E O S I U N L R T].include?(letter)
-      return 1
-    elsif %w[C D G].include?(letter)
-      return 2
-    elsif %w[B M P].include?(letter)
-      return 3
-    elsif %w[F H V Y].include?(letter)
-      return 4
-    elsif %w[J].include?(letter)
-      return 6
-    elsif %w[K LL Ñ Q RR W X].include?(letter)
-      return 8
-    elsif %w[Z].include?(letter)
-      return 10
-    else
-      return 0
-    end
+    SCORING_HASH[@language][letter]
   end
 end
