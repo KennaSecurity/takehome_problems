@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 class Scoring
-  def initialize(*args)
-    @language = :english # language is english by default
-    if args.length == 1 # if user specifies a language
-      @language = args[0] # set language
-    end
+  def initialize(language = :english)
+    @language = language # set language (defaults to english)
   end
 
   def score_letter(letter)
