@@ -19,10 +19,11 @@ class Scoring
   }
 
   def initialize(language = :english)
+    raise "\e[31mWe currently do not support #{language}!\e[0m" unless SCORING_HASH[language]
     @language = language # set language setting (defaults to english)
   end
 
   def score_letter(letter)
-    SCORING_HASH[@language][letter]
+    SCORING_HASH[@language][letter] || 0
   end
 end

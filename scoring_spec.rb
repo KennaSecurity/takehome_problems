@@ -60,7 +60,7 @@ RSpec.describe Scoring do
     context 'in Spanish' do
       language = :spanish
       subject { described_class.new(language) }
-      
+
       %w[A E O S I U N L R T].each do |letter|
         it "scores a #{letter} as 1 point" do
           expect(subject.score_letter(letter))
@@ -110,5 +110,16 @@ RSpec.describe Scoring do
         end
       end
     end
+
+    context 'in Unsupported Language' do
+      %w[:french :mandarin :quack :woof :meow].each do |language|
+        it 'raises RuntimeError exception' do
+          expect {
+            described_class.new(language)
+          }.to raise_error(RuntimeError)
+        end
+      end
+    end
+
   end
 end
