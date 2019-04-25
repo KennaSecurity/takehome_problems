@@ -42,7 +42,7 @@ class Scoring
       elsif %w[K LL Ñ Q RR W X].include?(letter)
         return 8
       elsif %w[Z].include?(letter)
-        10
+        return 10
       else
         return 0
       end
