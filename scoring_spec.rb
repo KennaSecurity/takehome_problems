@@ -5,7 +5,7 @@ require_relative 'scoring'
 
 RSpec.describe Scoring do
   subject { described_class.new}
-  test_game = Scoring.new'spanish'
+  test_game = Scoring.new(:spanish)
   describe '#score_letter' do
     context 'english' do
       %w[A E I O U L N R S T].each do |letter|

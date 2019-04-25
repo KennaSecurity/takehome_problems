@@ -2,32 +2,12 @@
 
 class Scoring
   attr_accessor :language
-  def initialize(language = 'english')
-    @language = language
+  def initialize(mode = :language )
+    @language = mode
   end
 
   def score_letter(letter)
-    if language == 'english'
-
-      if %w[A E I O U L N R S T].include?(letter)
-        return 1
-      elsif %w[D G].include?(letter)
-        return 2
-      elsif %w[B C M P].include?(letter)
-        return 3
-      elsif %w[F H V W Y].include?(letter)
-        return 4
-      elsif %w[K].include?(letter)
-        return 5
-      elsif %w[J X].include?(letter)
-        return 8
-      elsif %w[Q Z].include?(letter)
-        return 10
-      else
-        return 0
-      end
-
-    elsif language == 'spanish'
+    if language == :spanish
 
       if %w[A E I O U L N R S T].include?(letter)
         return 1
@@ -47,5 +27,25 @@ class Scoring
         return 0
       end
     end
+    
+      if %w[A E I O U L N R S T].include?(letter)
+        return 1
+      elsif %w[D G].include?(letter)
+        return 2
+      elsif %w[B C M P].include?(letter)
+        return 3
+      elsif %w[F H V W Y].include?(letter)
+        return 4
+      elsif %w[K].include?(letter)
+        return 5
+      elsif %w[J X].include?(letter)
+        return 8
+      elsif %w[Q Z].include?(letter)
+        return 10
+      else
+        return 0
+      end
+
+
   end
 end
