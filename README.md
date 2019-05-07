@@ -51,8 +51,10 @@ We're not allowed to sell there because of something called "Scrabble."
     - alter the behavior of existing code
 - You may (for added bonus):
     - take advantage of refactoring opportunities
-    - write new tests
+    - write new tests (hint if you've never used it: look into the `rspec` tool)
     - make performance improvements
+
+Please reach out to the Kenna Security team for guidance or conversation about the challenge any time as you're going through it!
 
 # References:
 
