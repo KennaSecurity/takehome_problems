@@ -4,12 +4,21 @@ We have built a very successful Scrobly game, which up until recently is only av
 
 Currently we use the scorer in the game this way:
 
+    # Ruby
     Scoring.new.score_letter('C') # returns 3
+
+    # Python
+    Scoring().score_letter('C') # returns 3
 
 This behavior should not change. However the engineers developing the TileService have communicated they intend to use the `Scoring` in the following way for the Mexico version:
 
+    # Ruby
     language = :spanish
     Scoring.new(language).score_letter('C') # returns 2
+
+    # Python
+    language = 'spanish'
+    Scoring(language).score_letter('C') # returns 2
 
 # Scoring "Business Logic"
 
@@ -42,6 +51,8 @@ Spanish-language sets sold within Mexico (known as Scrobly – Edición en Espa�
 We're not allowed to sell there because of something called "Scrabble."
 
 # What We're Testing For
+
+**Note:** You can choose to update the Ruby OR Python version, you do not need to do both! If you choose Python, note that this is a Python 3 project.
 
 - You do not have to finish the code or reach a perfect solution.
 - You should be able to explain the choices you have made.
