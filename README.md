@@ -57,12 +57,12 @@ We're not allowed to sell there because of something called "Scrabble."
 - You do not have to finish the code or reach a perfect solution.
 - You should be able to explain the choices you have made.
 - You should be able to demonstrate that you can:
-    - read a method in Ruby
+    - read a method in Ruby or Python
     - express business logic into new code
     - alter the behavior of existing code
 - You may (for added bonus):
     - take advantage of refactoring opportunities
-    - write new tests (hint if you've never used it: look into the `rspec` tool)
+    - write new tests (hint if you've never used it: look into the `rspec` tool if you chose Ruby, and the `unittest` framework if you chose Python)
     - make performance improvements
 
 Please reach out to the Kenna Security team for guidance or conversation about the challenge any time as you're going through it!
