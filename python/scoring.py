@@ -20,4 +20,4 @@ class Scoring:
             else:
                 return 0
         else:
-            return "Unsupported Language"
+            return "Error: Unsupported Language"
